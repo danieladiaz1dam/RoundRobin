@@ -10,7 +10,7 @@ def round_robin(quantum: int, tasks: List[Task]):
         # Tomamos la primera tarea en la cola
         current_task = tasks[0]
 
-        # Ejecutar la tarea durante un quantum y actualizar el progreso
+        # Ejecutar la tarea durante los quantums dados y actualizar el progreso
         current_task.update(quantum)
 
         # Imprimir el estado actual de la tarea
@@ -18,14 +18,13 @@ def round_robin(quantum: int, tasks: List[Task]):
 
         # Si la tarea está completa, la eliminamos de la lista
         if current_task.is_complete():
-            tasks.pop(0)  # Eliminamos la tarea de la lista
+            tasks.pop(0)
 
         # Si no está completa, la movemos al final de la cola
         else:
             tasks.append(tasks.pop(0))
 
-        # Simular tiempo de espera entre cada quantum
-        sleep(1)  # Pausa para simular el tiempo de procesamiento
+        sleep(1)
 
 
 if __name__ == '__main__':
@@ -35,4 +34,5 @@ if __name__ == '__main__':
         Task("Discord", 25),
         Task("Spotify", 10),
     ]
+
     round_robin(5, tasks_list)

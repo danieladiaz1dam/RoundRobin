@@ -16,6 +16,7 @@ class Task:
         return self.tiempo_restante <= 0
 
     def progress_bar(self):
+        """Devuelve una cadena de texto que contiene la barra de progreso de la tarea."""
         porcentaje = (self.executed / self.tiempo_total) * 100
         barras = int(porcentaje // 2)  # Convertir el porcentaje en barras
         return f"\r{self.name:<10} [{barras * '#':<50}]"
